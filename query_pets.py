@@ -11,7 +11,7 @@ def data():
 
     try:
         while userInput != -1:
-            userInput = raw_input('Please input a person\'s ID number: ')
+            userInput = raw_input('\nPlease input a person\'s ID number: ')
             userInput2 = userInput
             con = lite.connect('pets.db')
             cur = con.cursor()
@@ -33,13 +33,11 @@ def data():
             #print rows2
             print '\n{} {} is {} years old.'.format(rows[0][0], rows[0][1], rows[0][2])
             for pet in rows2:
-                #print pet, len(rows2)
 
-                if rows2[0][3] == 1:                    
-                    print '{} {} owned a {} named {}, who was {} years old.\n'.format(rows[0][0], rows[0][1], rows2[0][0], rows2[0][1], rows2[0][2])
+                if rows2[0][3] == 1:
+                    print '{} {} owned a {} named {}, who was {} years old.'.format(rows[0][0], rows[0][1], pet[0], pet[1], pet[2])
                 else:
-                    print '{} {} owns a {} named {}, who is {} years old.\n'.format(rows[0][0], rows[0][1], rows2[0][0], rows2[0][1], rows2[0][2])
-
+                    print '{} {} owns a {} named {}, who is {} years old.'.format(rows[0][0], rows[0][1], pet[0], pet[1], pet[2])
                 con.commit()
 
     except IndexError:
